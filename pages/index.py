@@ -23,15 +23,15 @@ column1 = dbc.Col(
             
             """
         ),
-        dcc.Link(dbc.Button('Predict The Price', color='primary'), href='/predictions')
+        dcc.Link(dbc.Button('Predict Price', color='primary'), href='/predictions')
     ],
     md=4,
+    align='center'
 )
 
-column2 = dbc.Col(
-    [
-        dcc.Graph(figure=fig),
-    ]
+column2 = dbc.Col([html.Img(src='assets/teslamodels.jpeg', className='img-fluid')
+],
+align='center'
 )
 
 layout = dbc.Row([column1, column2])
