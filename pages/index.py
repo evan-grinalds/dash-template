@@ -1,4 +1,3 @@
-# Imports from 3rd party libraries
 import dash
 import dash_bootstrap_components as dbc
 import dash_core_components as dcc
@@ -16,20 +15,18 @@ column1 = dbc.Col(
         dcc.Markdown(
             """
         
-            ## Your Value Proposition
+            ### Wanna go electric?
 
-            This predictor app with help make you an informed decision when buying your next Tesla. 
+            More electric cars are on the road everyday. This makes you wonder, 
+            can I afford one? This application answers that question by 
+            predicting which model has the best value.
             
             """
         ),
-        dcc.Link(dbc.Button('Your Call To Action', color='primary'), href='/predictions')
+        dcc.Link(dbc.Button('Predict The Price', color='primary'), href='/predictions')
     ],
     md=4,
 )
-
-gapminder = px.data.gapminder()
-fig = px.scatter(gapminder.query("year==2007"), x="gdpPercap", y="lifeExp", size="pop", color="continent",
-           hover_name="country", log_x=True, size_max=60)
 
 column2 = dbc.Col(
     [
