@@ -16,10 +16,10 @@ from app import app
 column1 = dbc.Col(
     [
         # Year
-        html.Div(  
-            [
-        dcc.Markdown('##### Age (years)'), 
-        daq.Slider(              
+            html.Div(  
+                [
+            dcc.Markdown('##### Year'), 
+            daq.Slider(              
             id='age', 
             min=2012, 
             max=2020, 
