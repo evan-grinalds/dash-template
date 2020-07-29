@@ -18,12 +18,8 @@ column1 = dbc.Col(
         
             ## Your Value Proposition
 
-            Emphasize how the app will benefit users. Don't emphasize the underlying technology.
-
-            ✅ RUN is a running app that adapts to your fitness levels and designs personalized workouts to help you improve your running.
-
-            ❌ RUN is the only intelligent running app that uses sophisticated deep neural net machine learning to make your run smarter because we believe in ML driven workouts.
-
+            This predictor app with help make you an informed decision when buying your next Tesla. 
+            
             """
         ),
         dcc.Link(dbc.Button('Your Call To Action', color='primary'), href='/predictions')
