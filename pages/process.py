@@ -13,12 +13,12 @@ from app import app
 column1 = dbc.Col(
     [
         dcc.Markdown(
-        """
-        I was curious which features influenced the price the most. As suspected, 
-        the mileage was the most important factor followed by the year.
-        """
+            """
+        
+            ## Process
+            """
         ),
-       
+
     ],
 )
 
