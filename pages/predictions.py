@@ -12,6 +12,18 @@ from app import app
 # https://dash-bootstrap-components.opensource.faculty.ai/l/components/layout
 column1 = dbc.Col(
     [   
+         # Vehicle Type dropdown (Yes, No)
+        dcc.Markdown('##### Vehicle'),
+        dcc.Dropdown(
+            id='vehicle', 
+            options= [
+                {'label': 'Tesla Model S', 'value': 1},
+            ],
+            className = 'mb-3',
+            value=0,
+            placeholder='Select vehicle'
+        ),
+        
         # Year dropdown (2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020)
         dcc.Markdown('##### Year'), 
         dcc.Dropdown(
