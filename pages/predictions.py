@@ -15,11 +15,23 @@ from app import app
 # https://dash-bootstrap-components.opensource.faculty.ai/l/components/layout
 column1 = dbc.Col(
     [
-        # Year
-            html.Div(  
-                [
-            dcc.Markdown('##### Year'), 
-            daq.Slider(              
+        # Drivetrain dropdown (Yes, No)
+        dcc.Markdown('##### All-Wheel Drive?'), 
+        dcc.Dropdown(
+            id='all_wheel_drive', 
+            options= [
+                {'label': 'Yes', 'value': 1},
+                {'label': 'No', 'value': 0},
+            ],
+            className = 'mb-3',
+            value=0,
+            placeholder='Select All-Wheel Drive'
+        ), 
+    # Year
+        html.Div(  
+            [
+        dcc.Markdown('##### Year'), 
+        daq.Slider(              
             id='age', 
             min=2012, 
             max=2020, 
@@ -39,26 +51,14 @@ column1 = dbc.Col(
             className='mb-4',
             handleLabel={
                 'label': 'Current',
-                'showCurrentValue': True
+                'showCurrentValue': False
                 },
             ),
             ],
             style={'marginTop': 15, 'marginBottom': 15},            
         ),
-        # Drivetrain dropdown (Yes, No)
-        dcc.Markdown('##### All-Wheel Drive?'), 
-        dcc.Dropdown(
-            id='all_wheel_drive', 
-            options= [
-                {'label': 'Yes', 'value': 1},
-                {'label': 'No', 'value': 0},
-            ],
-            className = 'mb-3',
-            value=1,
-            placeholder='Select All-Wheel Drive'
-        ), 
     ],
-    md=4,
+    md = 6,
 )
 
 column2 = dbc.Col(
