@@ -1,0 +1,290 @@
+Index Edit
+
+import dash
+import dash_bootstrap_components as dbc
+import dash_core_components as dcc
+import dash_html_components as html
+from dash.dependencies import Input, Output
+import plotly.express as px
+
+# Imports from this application
+from app import app
+
+# 2 column layout. 1st column width = 4/12
+# https://dash-bootstrap-components.opensource.faculty.ai/l/components/layout
+column1 = dbc.Col(
+    [
+        dcc.Markdown(
+            """
+        
+            ### Wanna go electric?
+
+            More electric cars are on the road everyday. This makes you wonder, 
+            can I afford one? This application answers that question by 
+            predicting which model has the best value.
+            
+            """
+        ),
+        dcc.Link(dbc.Button('Predict Price', color='primary'), href='/predictions')
+    ],
+    md=4,
+    align='center'
+)
+
+column2 = dbc.Col([html.Img(src='assets/teslamodels.jpeg', className='img-fluid')
+],
+align='center'
+)
+
+layout = dbc.Row([column1, column2])
+
+Insights Edit
+
+# Imports from 3rd party libraries
+import dash
+import dash_bootstrap_components as dbc
+import dash_core_components as dcc
+import dash_html_components as html
+from dash.dependencies import Input, Output
+
+# Imports from this application
+from app import app
+
+# 1 column layout
+# https://dash-bootstrap-components.opensource.faculty.ai/l/components/layout
+column1 = dbc.Col(
+    [
+        dcc.Markdown(
+           """
+           There were no easily accessible datasets for my topic, so I had to get creative. To create custom data, I used a Python’s 
+           Beautiful Soup web scraping tutorial. Parsing the data from cars.com was easy because of their user-friendly API. 
+           The values came out relatively clean because the script removed symbols and converted strings to integers. Finally, 
+           I one-hot encoded the categorical features to numerical so I can fit a model.
+            
+           I observed that this was a supervised learning regression model as the target (price) was numerical. To get started, I 
+           established a baseline by taking the mean of the data. If you saw a Model S driving down the street then this is how 
+           you could guess it’s worth.
+          
+           With a few key features, I was confident that some machine learning techniques could accurately predict the price of a 
+           given Tesla. Each method reduced the mean absolute error (MAE) to better predict the target (price). 
+           
+           1. Linear Regression was deployed to do a 80/20 split into training/validation. The split holds out the data from the testing 
+           subset to prevent leakage. Leakage means it is overfit and fit too good to be true. It is used to minimize the residual 
+           sum of squares between the observed targets in the dataset and the targets predicted by the linear approximation.
+
+           2. Ridge Regression found a new line that didn’t fit the training data as well. In other words, it introduced a small amount 
+           of bias into how the new line fit to the data. But in return for that small amount of bias, we get a significant drop in 
+           variance. By starting with a slightly worse fit, it can provide better long-term predictions.
+
+           3. XG Boost (eXtreme Gradient Boosting) was used because it is engineered for efficiency of compute time and memory resources. 
+           It does this by using a block structure to support the parallelization of tree construction.
+
+           4. Random Forest scored the most accurate because each decision tree trained on a random bootstrap sample of the data. 
+           This type of ensembling is called “bagging.” Each split considered a random subset of the features.
+            """
+        ),
+        # Baseline
+        html.Img(src='assets/carbon (1).png', 
+                 className='img-fluid', 
+                 style={'display': 'block', 'margin-left': 'auto','margin-right': 'auto','width' : '60%'}),
+        # Machine Learning
+        html.Img(src='assets/carbon (2).png', 
+                 className='img-fluid', 
+                 style={'display': 'block', 'margin-left': 'auto','margin-right': 'auto','width' : '60%'}), 
+        ],
+)
+
+layout = dbc.Row([column1])
+
+Prediction Edit
+
+# Mileage
+        #html.Div(  
+            [
+        #dcc.Markdown('##### Mileage'), 
+        #daq.Slider(              
+            #id='mileage', 
+            min=10000, 
+            max=100000, 
+            step=None,  
+            marks={
+                10000: '10000',
+                20000: '20000',
+                30000: '30000',
+                40000: '40000',
+                50000: '50000',
+                60000: '60000',
+                70000: '70000',
+                80000: '80000',
+                90000: '90000',
+                100000: '100000',
+                }, 
+            value=5,
+            className='mb-4',
+            handleLabel={
+                'label': 'Current',
+                'showCurrentValue': True
+                },
+            ),
+            ],
+            style={'marginTop': 15, 'marginBottom': 15},            
+        ),
+         # Battery
+        html.Div(  
+            [
+        dcc.Markdown('##### Battery (kwh)'), 
+        daq.Slider(              
+            id='battery', 
+            min=60, 
+            max=100, 
+            step=None,  
+            marks={
+                60: '60',
+                65: '65',
+                70: '70',
+                75: '75',
+                80: '80',
+                85: '85',
+                90: '90',
+                95: '95',
+                100: '100',
+                }, 
+            value=5,
+            className='mb-4',
+            handleLabel={
+                'label': 'Current',
+                'showCurrentValue': True
+                },
+            ),
+            ],
+            style={'marginTop': 15, 'marginBottom': 15},            
+        ),
+        # Performance Type dropdown (Yes, No)
+        dcc.Markdown('##### Ludacris Mode?'),
+        dcc.Dropdown(
+            id='ludacris_mode', 
+            options= [
+                {'label': 'Yes', 'value': 1},
+                {'label': 'No', 'value': 0},
+            ],
+            className = 'mb-3',
+            value=0,
+            placeholder='Select performance'
+        ),
+        
+        column1 = dbc.Col(
+    [
+        # Drivetrain dropdown (Yes, No)
+        dcc.Markdown('##### All-Wheel Drive?'), 
+        dcc.Dropdown(
+            id='all_wheel_drive', 
+            options= [
+                {'label': 'Yes', 'value': 1},
+                {'label': 'No', 'value': 0},
+            ],
+            className = 'mb-3',
+            value=0,
+            placeholder='Select All-Wheel Drive'
+        ), 
+    # Year
+        html.Div(  
+            [
+        dcc.Markdown('##### Year'), 
+        daq.Slider(              
+            id='age', 
+            min=2012, 
+            max=2020, 
+            step=None,  
+            marks={
+                2012: '2012',
+                2013: '2013',
+                2014: '2014',
+                2015: '2015',
+                2016: '2016',
+                2017: '2017',
+                2018: '2018',
+                2019: '2019',
+                2020: '2020',
+                }, 
+            value=5,
+            className='mb-4',
+            handleLabel={
+                'label': 'Current',
+                'showCurrentValue': False
+                },
+            ),
+            ],
+            style={'marginTop': 15, 'marginBottom': 15},            
+        ),
+    ],
+    md = 6,
+)
+
+column2 = dbc.Col(
+    [
+        html.H2('Price Prediction', className= 'mb-3'),
+        html.Div(id='prediction-content', className='lead'),
+        html.Div(id='image')
+    ],
+    md=6,
+)
+
+Process Edit
+
+# Imports from 3rd party libraries
+import dash
+import dash_bootstrap_components as dbc
+import dash_core_components as dcc
+import dash_html_components as html
+from dash.dependencies import Input, Output
+
+# Imports from this application
+from app import app
+
+# 1 column layout
+# https://dash-bootstrap-components.opensource.faculty.ai/l/components/layout
+column1 = dbc.Col(
+    [
+        dcc.Markdown(
+        """
+        I was curious which features influenced the price the most. As suspected, 
+        the mileage was the most important factor followed by the year.
+        """
+        ),
+        
+         
+        # Permutation Importance
+        html.Img(src='assets/Screen Shot 2020-07-28 at 11.56.17 AM.png', 
+                 className='img-fluid', 
+                 style={'display': 'block', 'margin-left': 'auto','margin-right': 'auto','width' : '60%'}), 
+        
+             
+        
+        dcc.Markdown(
+        """ 
+        This matrix shows exactly what mileage does to the price.
+        """
+        ),
+        
+        # Partial Dependence Plot
+        html.Img(src='assets/Screen Shot 2020-07-28 at 12.00.22 PM.png', 
+                 className='img-fluid', 
+                 style={'display': 'block', 'margin-left': 'auto','margin-right': 'auto','width' : '60%'}),
+        
+        dcc.Markdown(
+        """
+        If I had a budget of $40,000 then I would need to decide between an older 
+        Model S or newer Model 3. My choice was the Model 3 because it has ludacris mode and 
+        autopilot capabilities. That way I could take a quick nap during my commute.
+        """
+        ),
+        
+        # Conclusion
+        html.Img(src='assets/Screen Shot 2020-07-29 at 6.09.38 PM.png', 
+                 className='img-fluid', 
+                 style={'display': 'block', 'margin-left': 'auto','margin-right': 'auto','width' : '60%'}), 
+       
+    ],
+)
+
+layout = dbc.Row([column1])
