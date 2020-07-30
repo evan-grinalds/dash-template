@@ -37,6 +37,37 @@ column1 = dbc.Col(
             value=0,
             placeholder='Select All-Wheel Drive'
         ), 
+        
+        html.Div(  
+            [
+        dcc.Markdown('##### Mileage'), 
+        daq.Slider(              
+            id='mileage', 
+            min=10000, 
+            max=100000, 
+            step=None,  
+            marks={
+                10000: '10000',
+                20000: '20000',
+                30000: '30000',
+                40000: '40000',
+                50000: '50000',
+                60000: '60000',
+                70000: '70000',
+                80000: '80000',
+                90000: '90000',
+                100000: '100000',
+                }, 
+            value=5,
+            className='mb-4',
+            handleLabel={
+                'label': 'Current',
+                'showCurrentValue': True
+                },
+            ),
+            ],
+            style={'marginTop': 15, 'marginBottom': 15},            
+        ),
     ],
     md=4,
 )
