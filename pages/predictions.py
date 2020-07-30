@@ -12,12 +12,17 @@ from app import app
 # https://dash-bootstrap-components.opensource.faculty.ai/l/components/layout
 column1 = dbc.Col(
     [
-        dcc.Markdown(
-            """
-        
-            ## Predictions
-            Your instructions: How to use your app to get new predictions.
-            """
+        # Performance Type dropdown (Yes, No)
+        dcc.Markdown('##### Ludacris Mode?'),
+        dcc.Dropdown(
+            id='ludacris_mode', 
+            options= [
+                {'label': 'Yes', 'value': 1},
+                {'label': 'No', 'value': 0},
+            ],
+            className = 'mb-3',
+            value=0,
+            placeholder='Select performance'
         ),
     ],
     md=4,
