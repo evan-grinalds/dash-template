@@ -43,3 +43,5 @@ column1 = dbc.Col(
       
         ],
 )
+
+layout = dbc.Row([column1])
