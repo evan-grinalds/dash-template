@@ -12,6 +12,26 @@ from app import app
 # https://dash-bootstrap-components.opensource.faculty.ai/l/components/layout
 column1 = dbc.Col(
     [
+        # Battery dropdown (60, 65, 70, 75, 80, 85, 90, 95, 100)
+        dcc.Markdown('##### Battery (kwh)'), 
+        dcc.Dropdown(
+            id='battery', 
+            options= [
+                {'label': '60', 'value': 60},
+                {'label': '65', 'value': 65},
+                {'label': '70', 'value': 70},
+                {'label': '75', 'value': 75},
+                {'label': '80', 'value': 80},
+                {'label': '85', 'value': 85},
+                {'label': '90', 'value': 90},
+                {'label': '95', 'value': 95},
+                {'label': '100', 'value': 100},
+            ],
+            className = 'mb-3',
+            value=0,
+            placeholder='Select battery'
+        ), 
+        
         # Performance Type dropdown (Yes, No)
         dcc.Markdown('##### Ludacris Mode?'),
         dcc.Dropdown(
@@ -37,37 +57,6 @@ column1 = dbc.Col(
             value=0,
             placeholder='Select All-Wheel Drive'
         ), 
-        
-        html.Div(  
-            [
-        dcc.Markdown('##### Mileage'), 
-        daq.Slider(              
-            id='mileage', 
-            min=10000, 
-            max=100000, 
-            step=None,  
-            marks={
-                10000: '10000',
-                20000: '20000',
-                30000: '30000',
-                40000: '40000',
-                50000: '50000',
-                60000: '60000',
-                70000: '70000',
-                80000: '80000',
-                90000: '90000',
-                100000: '100000',
-                }, 
-            value=5,
-            className='mb-4',
-            handleLabel={
-                'label': 'Current',
-                'showCurrentValue': True
-                },
-            ),
-            ],
-            style={'marginTop': 15, 'marginBottom': 15},            
-        ),
     ],
     md=4,
 )
