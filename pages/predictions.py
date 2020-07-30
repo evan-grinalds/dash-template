@@ -31,6 +31,7 @@ column1 = dbc.Col(
             value=0,
             placeholder='Select year'
         ), 
+        
         # Miles dropdown (20000, 40000, 60000, 80000, 100000, 120000)
         dcc.Markdown('##### Mileage'), 
         dcc.Dropdown(
@@ -47,6 +48,7 @@ column1 = dbc.Col(
             value=0,
             placeholder='Select mileage'
         ), 
+        
         # Battery dropdown (60, 65, 70, 75, 80, 85, 90, 95, 100)
         dcc.Markdown('##### Battery (kwh)'), 
         dcc.Dropdown(
