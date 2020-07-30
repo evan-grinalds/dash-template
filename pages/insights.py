@@ -11,7 +11,7 @@ from app import app
 # 1 column layout
 # https://dash-bootstrap-components.opensource.faculty.ai/l/components/layout
 column1 = dbc.Col(
-    [
+    [   
         dcc.Markdown(
            """
            There were no easily accessible datasets for my topic, so I had to get creative. To create custom data, I used a Python’s 
