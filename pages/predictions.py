@@ -11,7 +11,42 @@ from app import app
 # 2 column layout. 1st column width = 4/12
 # https://dash-bootstrap-components.opensource.faculty.ai/l/components/layout
 column1 = dbc.Col(
-    [
+    [   
+        # Year dropdown (2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020)
+        dcc.Markdown('##### Year'), 
+        dcc.Dropdown(
+            id='year', 
+            options= [
+                {'label': '2012', 'value': 2012},
+                {'label': '2013', 'value': 2013},
+                {'label': '2014', 'value': 2014},
+                {'label': '2015', 'value': 2015},
+                {'label': '2016', 'value': 2016},
+                {'label': '2017', 'value': 2017},
+                {'label': '2018', 'value': 2018},
+                {'label': '2019', 'value': 2019},
+                {'label': '2020', 'value': 2020},   
+            ],
+            className = 'mb-3',
+            value=0,
+            placeholder='Select year'
+        ), 
+        # Miles dropdown (20000, 40000, 60000, 80000, 100000, 120000)
+        dcc.Markdown('##### Mileage'), 
+        dcc.Dropdown(
+            id='mileage', 
+            options= [
+                {'label': '20000', 'value': 20000},
+                {'label': '40000', 'value': 40000},
+                {'label': '60000', 'value': 60000},
+                {'label': '80000', 'value': 80000},
+                {'label': '100000', 'value': 100000},
+                {'label': '120000', 'value': 120000},
+            ],
+            className = 'mb-3',
+            value=0,
+            placeholder='Select mileage'
+        ), 
         # Battery dropdown (60, 65, 70, 75, 80, 85, 90, 95, 100)
         dcc.Markdown('##### Battery (kwh)'), 
         dcc.Dropdown(
@@ -33,7 +68,7 @@ column1 = dbc.Col(
         ), 
         
         # Performance Type dropdown (Yes, No)
-        dcc.Markdown('##### Ludacris Mode?'),
+        dcc.Markdown('##### Ludacris Mode'),
         dcc.Dropdown(
             id='ludacris_mode', 
             options= [
@@ -46,7 +81,7 @@ column1 = dbc.Col(
         ),
         
         # Drivetrain dropdown (Yes, No)
-        dcc.Markdown('##### All-Wheel Drive?'), 
+        dcc.Markdown('##### All-Wheel Drive'), 
         dcc.Dropdown(
             id='all_wheel_drive', 
             options= [
