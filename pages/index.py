@@ -29,7 +29,7 @@ column1 = dbc.Col(
     align='center'
 )
 
-column2 = dbc.Col([html.Img(src='assets/teslamodels.jpeg', className='img-fluid')
+column2 = dbc.Col([html.Img(src='assets/model3.jpeg', className='img-fluid')
 ],
 align='center'
 )
