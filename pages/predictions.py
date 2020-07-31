@@ -111,16 +111,18 @@ column1 = dbc.Col(
 )
 
 column2 = dbc.Col(
-    [
-
-    ]
+     [
+        html.H2('Price Prediction', className= 'mb-3'),
+        html.Div(id='prediction-content', className='lead'),
+        html.Div(id='image')
+    ],
+    md=6,
 )
-
 layout = dbc.Row([column1, column2])
 
 @app.callback(
     Output('image', 'children'),
-    [Input('animal_type', 'value')],
+    [Input('vehicle_type', 'value')],
 )
 def change_image(vehicle_type):
     if vehicle_type == 1:
