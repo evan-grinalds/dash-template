@@ -18,7 +18,7 @@ import plotly.express as px
 
 # Imports from this application
 from app import app
-model = joblib.load('Tesla_Friday.pkl')
+model = joblib.load('assets/Tesla_Final.pkl')
 
 # 2 column layout. 1st column width = 4/12
 # https://dash-bootstrap-components.opensource.faculty.ai/l/components/layout
