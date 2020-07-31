@@ -129,13 +129,13 @@ layout = dbc.Row([column1, column2])
     Input('ludacris_mode_Yes', 'value'),
     Input('ludacris_mode_No', 'value'),
     Input('all_wheel_drive_Yes', 'value'),
-    Input('all_wheel_drive_No', 'value')
+    Input('all_wheel_drive_No', 'value'),
     Input('mileage', 'value')   
     ],
 )
 def predict(year, car, battery, ludacris_mode_Yes, ludacris_mode_No, all_wheel_drive_Yes, all_wheel_drive_No, mileage):
     df = pd.DataFrame(
-        columns=['year', 'car', 'battery', 'ludacris_mode_Yes', 'ludacris_mode_No', 'all_wheel_drive_Yes', 'all_wheel_drive_No', 'milage'],
+        columns=['year', 'car', 'battery', 'ludacris_mode_Yes', 'ludacris_mode_No', 'all_wheel_drive_Yes', 'all_wheel_drive_No', 'mileage'],
         data=[[year, car, battery, ludacris_mode_Yes, ludacris_mode_No, all_wheel_drive_Yes, all_wheel_drive_No, mileage]]
     )
     y_pred=search.predict(df)[0]
