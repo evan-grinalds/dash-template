@@ -7,6 +7,7 @@ from dash.dependencies import Input, Output
 
 # Imports from this application
 from app import app
+search = load('assets/Tesla_Model_Final.pkl')
 
 # 2 column layout. 1st column width = 4/12
 # https://dash-bootstrap-components.opensource.faculty.ai/l/components/layout
