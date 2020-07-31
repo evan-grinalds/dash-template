@@ -1,13 +1,24 @@
 # Imports from 3rd party libraries
+import os
+from random import randint
+
+import plotly as py
 import dash
 import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
+import plotly.figure_factory as ff
+import plotly.graph_objects as go
+import joblib
+import pickle
+import pandas as pd
+import numpy as np
+import plotly.express as px
 
 # Imports from this application
 from app import app
-search = load('assets/Tesla_Model_Final.pkl')
+model = joblib.load('Tesla_Friday.pkl')
 
 # 2 column layout. 1st column width = 4/12
 # https://dash-bootstrap-components.opensource.faculty.ai/l/components/layout
@@ -139,5 +150,5 @@ def predict(year, car, battery, ludacris_mode_Yes, ludacris_mode_No, all_wheel_d
         columns=['year', 'car', 'battery', 'ludacris_mode_Yes', 'ludacris_mode_No', 'all_wheel_drive_Yes', 'all_wheel_drive_No', 'mileage'],
         data=[[year, car, battery, ludacris_mode_Yes, ludacris_mode_No, all_wheel_drive_Yes, all_wheel_drive_No, mileage]]
     )
-    y_pred=search.predict(df)[0]
+    y_pred=model.predict(df)[0]
     return y_pred
