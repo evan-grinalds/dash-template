@@ -126,7 +126,6 @@ column2 = dbc.Col(
      [
         html.H2('Price Prediction', className= 'mb-3'),
         html.Div(id='prediction-content', className='lead'),
-        html.Div(id='image')
     ],
     md=6,
 )
@@ -136,7 +135,6 @@ layout = dbc.Row([column1, column2])
     Output('prediction-content', 'children'),
     [
     Input('year', 'value'),
-    Input('car', 'value'),
     Input('battery', 'value'),
     Input('ludacris_mode_Yes', 'value'),
     Input('ludacris_mode_No', 'value'),
@@ -145,10 +143,10 @@ layout = dbc.Row([column1, column2])
     Input('mileage', 'value')   
     ],
 )
-def predict(year, car, battery, ludacris_mode_Yes, ludacris_mode_No, all_wheel_drive_Yes, all_wheel_drive_No, mileage):
+def predict(year, battery, ludacris_mode_Yes, ludacris_mode_No, all_wheel_drive_Yes, all_wheel_drive_No, mileage):
     df = pd.DataFrame(
-        columns=['year', 'car', 'battery', 'ludacris_mode_Yes', 'ludacris_mode_No', 'all_wheel_drive_Yes', 'all_wheel_drive_No', 'mileage'],
-        data=[[year, car, battery, ludacris_mode_Yes, ludacris_mode_No, all_wheel_drive_Yes, all_wheel_drive_No, mileage]]
+        columns=['year', 'battery', 'ludacris_mode_Yes', 'ludacris_mode_No', 'all_wheel_drive_Yes', 'all_wheel_drive_No', 'mileage'],
+        data=[[year, battery, ludacris_mode_Yes, ludacris_mode_No, all_wheel_drive_Yes, all_wheel_drive_No, mileage]]
     )
-    y_pred=model.predict(df)[0]
+    y_pred = model.predict(df)[0]
     return y_pred
