@@ -117,3 +117,13 @@ column2 = dbc.Col(
 )
 
 layout = dbc.Row([column1, column2])
+
+@app.callback(
+    Output('image', 'children'),
+    [Input('animal_type', 'value')],
+)
+def change_image(vehicle_type):
+    if vehicle_type == 1:
+        return html.Img(src='assets/teslamodels.jpeg', className='img-flud', style={'height': '400px'})
+    else:
+        return html.Img(src='assets/teslamodels.jpeg', className='img-flud', style={'height': '400px'})
