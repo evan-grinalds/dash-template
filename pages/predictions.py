@@ -125,7 +125,7 @@ column1 = dbc.Col(
 column2 = dbc.Col(
      [
         html.H2('Price Prediction', className= 'mb-3'),
-        html.Div(id='prediction-content', className='lead'),
+        html.H3(id='prediction-content', className='lead'),
     ],
     md=6,
 )
@@ -149,4 +149,4 @@ def predict(year, battery, ludacris_mode_Yes, ludacris_mode_No, all_wheel_drive_
         data=[[year, battery, ludacris_mode_Yes, ludacris_mode_No, all_wheel_drive_Yes, all_wheel_drive_No, mileage]]
     )
     y_pred = model.predict(df)[0]
-    return y_pred
+    return str(y_pred)
